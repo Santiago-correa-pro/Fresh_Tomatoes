@@ -2,6 +2,14 @@ import fresh_tomatoes
 import media
 import requests
 
+# Make requests for movies by id through TheMovieDb API.
+
+
+def get_movie(movie_id):
+    api_key = '426751a9d48233ac9475b48847c77d13'
+    return requests.get(
+        "https://api.themoviedb.org/3/movie/{}?api_key={}".format(movie_id, api_key))  # NOQA
+
 
 # Movie title , Movie Story , Movie box cover and Movie trailer
 toy_story = media.Movie(
@@ -17,17 +25,17 @@ avatar = media.Movie(
 insidious = media.Movie(
     "Insidious: The Last Key",
     " A parapsychologist continues her voyage into the further",
-    "http://t1.gstatic.com/images?q=tbn:ANd9GcTE0r-ZiGH8aV-Nz4j9KHtrv_UdL-rioSlcb8PGkUHjxaoUxolc",
+    "http://t1.gstatic.com/images?q=tbn:ANd9GcTE0r-ZiGH8aV-Nz4j9KHtrv_UdL-rioSlcb8PGkUHjxaoUxolc",  # NOQA
     "https://www.youtube.com/watch?v=pXJC4mZmU_U")
 friends = media.TV_Show_Movies(
     "Friends",
     "A group of friends learning how to live together",
-    "https://vignette.wikia.nocookie.net/friends/images/2/20/P183931_b_v8_ac.jpg/revision/latest?cb=20160929100417",
+    "https://vignette.wikia.nocookie.net/friends/images/2/20/P183931_b_v8_ac.jpg/revision/latest?cb=20160929100417",  # NOQA
     "https://www.youtube.com/watch?v=Gpa5S8DgPzs")
 
-# Using TheMovieDb api to get title of movies
-req_blade_runner = requests.get(
-    "https://api.themoviedb.org/3/movie/335984?api_key=426751a9d48233ac9475b48847c77d13")
+
+# Get movie by id
+req_blade_runner = get_movie(335984)
 
 # Get results in JSON format
 blade_runner_data = req_blade_runner.json()
@@ -35,11 +43,10 @@ blade_runner_data = req_blade_runner.json()
 blade_runner = media.Movie(
     blade_runner_data[u'original_title'],
     "K's discovery leads him on a quest to find Rick Deckard",
-    "https://media1.fdncms.com/portmerc/imager/u/original/19361423/158974_af.jpg",
+    "https://media1.fdncms.com/portmerc/imager/u/original/19361423/158974_af.jpg",  # NOQA
     "https://www.youtube.com/watch?v=6T2b0mp2hco")
 
-req_fight_club = requests.get(
-    "https://api.themoviedb.org/3/movie/550?api_key=426751a9d48233ac9475b48847c77d13")
+req_fight_club = get_movie(550)
 
 fight_club_data = req_fight_club.json()
 
