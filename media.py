@@ -21,6 +21,7 @@ class Movie():
 
 
 class TV_Show_Movies(Movie):
+    """This class is used to store TV show movies and related info."""
     # Function gets title,story,image and trailer
     def __init(self, tv_title, tv_storyline, poster_image, trailer_youtube):
         # Inherits poster_image and trailer_youtube
