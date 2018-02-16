@@ -1,0 +1,145 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Bj4gS1JQzjk" data-toggle="modal" data-target="#trailer">
+    <img src="https://i.imgur.com/TpMrf4M.jpg" width="220" height="342">
+    <h2>Toy Story</h2>
+    <h4>A story of a boy and his toys that come to life<h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="6ziBFh3V1aM" data-toggle="modal" data-target="#trailer">
+    <img src="https://www.halon.com/wp-content/uploads/2010/07/avatar_poster1.jpg" width="220" height="342">
+    <h2>Avatar</h2>
+    <h4>A marine on an alien planet<h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="pXJC4mZmU_U" data-toggle="modal" data-target="#trailer">
+    <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcTE0r-ZiGH8aV-Nz4j9KHtrv_UdL-rioSlcb8PGkUHjxaoUxolc" width="220" height="342">
+    <h2>Insidious: The Last Key</h2>
+    <h4> A parapsychologist continues her voyage into the further<h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Gpa5S8DgPzs" data-toggle="modal" data-target="#trailer">
+    <img src="https://vignette.wikia.nocookie.net/friends/images/2/20/P183931_b_v8_ac.jpg/revision/latest?cb=20160929100417" width="220" height="342">
+    <h2>Friends</h2>
+    <h4>A group of friends learning how to live together<h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SUXWAEX2jlg" data-toggle="modal" data-target="#trailer">
+    <img src="https://timedotcom.files.wordpress.com/2014/07/poster.jpg" width="220" height="342">
+    <h2>Fight Club</h2>
+    <h4>Their concept catch on with underground fight clubs.<h4>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="6T2b0mp2hco" data-toggle="modal" data-target="#trailer">
+    <img src="https://media1.fdncms.com/portmerc/imager/u/original/19361423/158974_af.jpg" width="220" height="342">
+    <h2>Blade Runner 2049</h2>
+    <h4>K's discovery leads him on a quest to find Rick Deckard<h4>
+</div>
+
+    </div>
+  </body>
+</html>
